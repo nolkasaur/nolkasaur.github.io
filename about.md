@@ -3,4 +3,4 @@ layout: page
 title: About
 ---
 
-Something about me.
+Computer Science MSc, Software Developer by day, Infosec student and hobbyist by night
