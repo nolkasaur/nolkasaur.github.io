@@ -7,6 +7,8 @@ Twitter [@nolkasaur](https://twitter.com/nolkasaur)
 
 Github [@nolkasaur](https://github.com/nolkasaur)
 
-Contact me [@protonmail.com](mailto:nolkasaur@protonmail.com)
+Contact me [@protonmail.com](mailto:brunofirmino@protonmail.com)
 
-Blog forked from [tocttou](https://github.com/tocttou/hacker-blog)
+[My Public PGP Key](../files/publickey.txt)
+
+*Blog forked from [tocttou](https://github.com/tocttou/hacker-blog)*
