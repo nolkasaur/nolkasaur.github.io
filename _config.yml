@@ -1,8 +1,8 @@
 title: Bruno Firmino
-description: "My Pwning Journey"
+description: "My Tech Zone"
 author:
   name: "Bruno Firmino"
-  email: "nolkasaur@protonmail.com"
+  email: "brunofirmino@protonmail.com"
   url: "https://bfirmino.com"
 
 baseurl: /
@@ -29,4 +29,4 @@ plugins:
 
 # Custom variables
 owner : "Bruno Firmino"
-year : "2020"
+year : "2021"

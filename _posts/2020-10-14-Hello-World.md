@@ -1,16 +1,14 @@
 ---
-title: Checkpoint 2 - Progress
+title: Hello World
 published: true
 ---
 
-Hi! This post will have more content than the previous two. It's also the first post using my new own domain!
+Hi.
 
-I've gone through Heath's two other courses, [Linux Privilege Escalation for Beginners](https://www.udemy.com/course/linux-privilege-escalation-for-beginners/) and [Windows Privilege Escalation for Beginners](https://www.udemy.com/course/windows-privilege-escalation-for-beginners/).
-This material was a fantastic complement to the base Practical Ethical Hacking course for learning more and better privilege escalation techniques for both operating systems. Granted, some of the material sort of went over my head so I will have to come back in a few months and watch these again when I have more working knowledge and practice, which is fundamental.
+I've gone through Heath Adam's (TCM Security Inc.) three courses, [Practical Ethical Hacking - The Complete Course](https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course), [Linux Privilege Escalation for Beginners](https://academy.tcm-sec.com/p/linux-privilege-escalation) and [Windows Privilege Escalation for Beginners](https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners).
+I took some notes [here](https://github.com/nolkasaur/Practical-Ethical-Hacking-course-notes-KeepNote-).
 
-Along with these two courses I've also gone and rewatched the first one, this time taking some notes along the way. You can get them [here](https://github.com/nolkasaur/Practical-Ethical-Hacking-course-notes-KeepNote-). These aren't very extensive and they're useful to me as a quick reference/cheat sheet, however they might not be for you. I highly recommend taking your own notes too.
-
-I also took note of a bunch of the most common and useful commands I saw:
+I also wrote down a bunch of the most common and useful commands I saw:
 
 # Windows
 
@@ -172,7 +170,3 @@ I've also gone through a few articles I had bookmarked (I have a lot of them):
 
     Helpful short article with good professional/career advice in the field (part 2 of 2). I thought this quote was interesting and it is something I personally struggle with: **Where I think people get it wrong early in their career, is they see these high flying people who’re super-focused on one particular area and they look for the quickest way to become like them. It can be really enticing to shoot for that early on, as your perception may be that they’ve always been focused on that area, but I would advise against it. When you look at high performers who’re specialist, they normally have a background with broad experiences. They’ve been a generalist before they’ve become a specialist, in fact that generalism has allowed them to become the ninja they are. There are some exceptions to this, but generally you’ll find that you need broad foundations on which to build. My advice is to spend a few years exploring things with a technology focus. Live outside your comfort zone and get used to being a perpetual beginner. This may feel unsettling at first, but it will set you up with the right mind-set to be open to new ideas and experimentation, which is key**.
 
-Side note, I also registered and solved a few challenges on [root-me.org](https://www.root-me.org/) and took part in [b01lers CTF](https://ctf.b01lers.com/). I'm still not skilled enough to solve all the challenges but I think I might start doing some simple writeups for fun, in the future.
-I've also started to tinker with the Rust programming language!
-
-That's all for now. See you!

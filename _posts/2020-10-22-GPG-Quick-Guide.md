@@ -3,7 +3,7 @@ title: GPG quick guide
 published: true
 ---
 
-Hi! I've just configured GPG and I thought I might as well post a quick guide on how to use it.
+Hi.
 
 GNU Privacy Guard (GnuPG or GPG) is an encryption program that provides cryptographic privacy and authentication for data communication. It's used for signing, encrypting, and decrypting texts, files, e-mails and such.
 
