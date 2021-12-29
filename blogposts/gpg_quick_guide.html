@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Bruno Firmino</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/themes/dark.css">
+</head>
+<body>
+	<main>
+		<div class="intro">Hello, I'm Bruno!</div>
+		<div class="tagline"><a style="color:#ffffff; text-decoration:none" href="../index.html">Home</a> | <a style="color:#ffffff; text-decoration:none" href="../about.html">About</a> | <a style="color:#ffffff; text-decoration:none" href="../blog.html">Blog</a></div>
+		<div style="text-align: left; padding-left: 80px; padding-right: 80px; margin-bottom: 50px;">
+			<div><h1>GPG Quick Guide</h1><br>
+			<h3>22 Oct 2020<h3><br><br>
+			
+			Hi!<br><br>
+
+GNU Privacy Guard (GnuPG or GPG) is an encryption program that provides cryptographic privacy and authentication for data communication. It’s used for signing, encrypting, and decrypting texts, files, e-mails and such.<br>
+
+GPG is a replacement for Symantec’s PGP (Pretty Good Privacy). They both are interoperable implementations of the OpenPGP standards. I chose to go with GPG because I’m biased toward free and open source software.<br><br>
+
+After you download and install GPG on your operation system of choice, here are a few commands you might find useful:<br><br>
+
+# Check GPG version<br>
+
+<p style="color:#009933">gpg --version<p><br>
+
+# List public keys you have stored (yours and other people’s keys)<br>
+
+<p style="color:#009933">gpg --list-keys<p><br>
+
+# List private keys (generally only your own)<br>
+
+# The ID is the hexadecimal number listed<br>
+
+<p style="color:#009933">gpg --list-secret-keys<p><br>
+
+# Create a new private key<br>
+
+# It will ask for a passphrase, your name and e-mail<br>
+
+<p style="color:#009933">gpg --gen-key<p><br>
+
+# Export public key to file<br>
+
+<p style="color:#009933">gpg --armor --output "key.txt" --export "YOUR-NAME"<p><br>
+
+# Publish public key to server<br>
+
+# MIT is just an example<br>
+
+<p style="color:#009933">gpg --keyserver hkp://pgp.mit.edu --send-keys XXXXXXXX<p><br>
+
+# Export private key to file, for backup purposes<br>
+
+# Keep it secret!<br>
+
+# Replace XXXXXXXX with your hexadecimal key ID<br>
+
+# Omitting the --armor flag will give you binary output instead of ASCII<br>
+
+<p style="color:#009933">gpg --export-secret-keys --armor XXXXXXXX > ./my-priv-gpg-key.asc<p><br>
+
+# Delete private keys from local storage<br>
+
+<p style="color:#009933">gpg --delete-secret-keys XXXXXXXX<p><br>
+
+# Delete public keys from local storage<br>
+
+<p style="color:#009933">gpg --delete-keys XXXXXXXX<p><br>
+
+# Import public key or private key from file<br>
+
+# This works the same for binary or ASCII (armored) versions of keys<br>
+
+<p style="color:#009933">gpg --import ./my-priv-gpg-key.asc<p><br>
+
+# Import public key or private key from server<br>
+
+# For example, import the DevDungeon/NanoDano public GPG key from MIT<br>
+
+<p style="color:#009933">gpg --keyserver pgp.mit.edu  --recv C104CDF0EDA54C82<p><br>
+
+# Import NanoDano’s public GPG key<br>
+
+<p style="color:#009933">gpg --keyserver pgp.mit.edu --search-keys nanodano@devdungeon.com<p><br>
+
+<p style="color:#009933">Encrypt message symmetrically (passphrase)<p><br>
+
+# Options: --armor, --cipher-algo “ALGO-NAME (e.g. AES256)”, --output “output.txt.gpg (or .asc if armored)”<br>
+
+<p style="color:#009933">gpg --symmetric message.txt<p><br>
+
+# Encrypt and sign (all in a single output file)<br>
+
+<p style="color:#009933">gpg --sign --symmetric message.txt<p><br>
+
+Encrypt message asymmetrically<br>
+
+# This will prompt and ask the recipient’s ID or email address, if you don’t specify it upfront<br>
+
+# Options: -r “RECIPIENT-EMAIL-ADDRESS”, --armor, --output “output.txt.gpg (or .asc if armored)”<br>
+
+# Default encrypted output will be in message.txt.gpg (or .asc if armored)<br>
+
+<p style="color:#009933">gpg --encrypt message.txt<p><br>
+
+# Encrypt and sign at the same time<br>
+
+<p style="color:#009933">gpg --encrypt --sign message.txt<p><br>
+
+Decrypt message<br>
+
+# Automatically detects and verifies signature, symmetry, key, may prompt for passphrase<br>
+
+# Options: > decrypted.txt (redirect output to file)<br>
+
+<p style="color:#009933">gpg -d message.txt.gpg<p><br>
+
+Sign a message<br>
+
+# Options: --sign instead of --clearsign in order to obtain binary output<br>
+
+<p style="color:#009933">gpg --clearsign message.txt<p><br>
+
+# Can be verified with –decrypt<br>
+
+# They are not actually encrypted<br>
+
+# This will print out the message along with the signature info<br>
+
+<p style="color:#009933">gpg --decrypt message.txt.gpg<p>
+<p style="color:#009933">gpg --decrypt message.txt.asc<p><br>
+
+Encrypt and sign a message<br>
+
+# Symmetric encrypt with signature<br>
+
+<p style="color:#009933">gpg --sign --symmetric message.txt<p><br>
+
+# Asymmetric encrypt with signature<br>
+
+<p style="color:#009933">gpg --sign --encrypt --recipient RECIPIENT-EMAIL message.txt<p><br>
+
+Verify signatures<br>
+
+# When you decrypt the message it will verify the signature<br>
+
+<p style="color:#009933">gpg --decrypt message.txt.asc<p><br>
+
+# Verify a signed message that included a signature<br>
+
+<p style="color:#009933">gpg --verify message.txt.asc<p><br>
+
+# Verify and extract original document<br>
+
+<p style="color:#009933">gpg --output message.txt message.txt.asc<p><br>
+
+Detached signatures<br>
+
+# Create a separate signature file<br>
+
+# Will create message.txt.sig<br>
+
+<p style="color:#009933">gpg --detach-sign message.txt<p><br>
+
+# This verify will automatically check the signature against a file named “message.txt”<br>
+
+<p style="color:#009933">gpg --verify message.txt.sig<p><br>
+
+# Specify the file to check it against<br>
+
+<p style="color:#009933">gpg --verify some_signature.sig ./message.txt<p><br>
+
+You can check out my public key on my About page.<br><br>
+
+Based on <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.devdungeon.com/content/gpg-tutorial">this</a> guide by NanoDano
+			</div>
+		</div>
+		<div class="footer">Bruno Firmino @ 2022</div>
+	</main>
+</body>
+</html>

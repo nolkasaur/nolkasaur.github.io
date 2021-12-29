@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+	<title>Bruno Firmino</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="../css/reset.css">
+	<link rel="stylesheet" href="../css/styles.css">
+	<link rel="stylesheet" href="../css/themes/dark.css">
+</head>
+<body>
+	<main>
+		<div class="intro">Hello, I'm Bruno!</div>
+		<div class="tagline"><a style="color:#ffffff; text-decoration:none" href="../index.html">Home</a> | <a style="color:#ffffff; text-decoration:none" href="../about.html">About</a> | <a style="color:#ffffff; text-decoration:none" href="../blog.html">Blog</a></div>
+		<div style="text-align: left; padding-left: 80px; padding-right: 80px; margin-bottom: 50px;">
+			<div><h1>GPG Quick Guide</h1><br>
+			<h3>22 Oct 2020<h3><br><br>
+			
+			Hi!<br><br>
+
+I’ve gone through Heath Adam’s (TCM Security Inc.) three courses, <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://academy.tcm-sec.com/p/practical-ethical-hacking-the-complete-course">Practical Ethical Hacking - The Complete Course</a>, <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://academy.tcm-sec.com/p/linux-privilege-escalation">Linux Privilege Escalation for Beginners</a> and <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://academy.tcm-sec.com/p/windows-privilege-escalation-for-beginners">Windows Privilege Escalation for Beginners</a>. I took some notes <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://github.com/nolkasaur/Practical-Ethical-Hacking-course-notes-KeepNote-">here</a>.<br><br>
+
+I also wrote down a bunch of the most common and useful commands I saw:<br><br>
+
+<h2>Windows</h2><br>
+
+<h3>System Enumeration</h3><br>
+
+<p style="color:#009933">hostname<p>
+<p style="color:#009933">systeminfo<p>
+<p style="color:#009933">systeminfo | findstr /B /C:”OS Name” /C:”OS Version” /C:”System Type”<p>
+<p style="color:#009933">wmic qfe<p>
+<p style="color:#009933">wmic qfe get Caption,Description,HotFixID,InstalledOn<p>
+<p style="color:#009933">list drives<p>
+<p style="color:#009933">wmic logicaldisk<p>
+<p style="color:#009933">wmic logicaldisk get caption,description,providername<p><br>
+
+<h3>System Enumeration</h3><br>
+
+<p style="color:#009933">whoami<p>
+<p style="color:#009933">whoami /priv<p>
+<p style="color:#009933">whoami /groups<p>
+<p style="color:#009933">net user<p>
+<p style="color:#009933">net user administrator<p>
+<p style="color:#009933">net localgroup<p>
+<p style="color:#009933">net localgroup administrators<p>
+
+<h3>Network Enumeration</h3><br>
+
+<p style="color:#009933">ipconfig<p>
+<p style="color:#009933">ipconfig /all<p>
+<p style="color:#009933">arp -a<p>
+<p style="color:#009933">route print<p>
+<p style="color:#009933">netstat -ano<p><br>
+
+<h3>Password Hunting</h3><br>
+
+<p style="color:#009933">findstr /si password *.txt *.ini *.config<p>
+
+<h3>AV and Firewall Enumeration</h3><br>
+
+<p style="color:#009933">sc query windefend<p>
+<p style="color:#009933">sc queryex type= service<p>
+<p style="color:#009933">netsh advfirewall firewall dump<p>
+<p style="color:#009933">netsh firewall show state<p>
+<p style="color:#009933">netsh firewall show configuration<p><br>
+
+<h2>Linux</h2><br>
+
+<h3>System Enumeration</h3><br>
+
+<p style="color:#009933">hostname<p>
+<p style="color:#009933">uname -a<p>
+<p style="color:#009933">cat /proc/version<p>
+<p style="color:#009933">cat /etc/issue<p>
+<p style="color:#009933">lscpu<p>
+<p style="color:#009933">ps aux<p>
+<p style="color:#009933">ps aux | grep root<p><br>
+
+<h3>User Enumeration</h3><br>
+
+<p style="color:#009933">whoami<p>
+<p style="color:#009933">id<p>
+<p style="color:#009933">sudo -l<p>
+<p style="color:#009933">cat /etc/passwd<p>
+<p style="color:#009933">cat /etc/passwd | cut -d : -f 1<p>
+<p style="color:#009933">cat /etc/shadow<p>
+<p style="color:#009933">cat /etc/group<p>
+<p style="color:#009933">history<p>
+<p style="color:#009933">sudo su -<p><br>
+
+<h3>Network Enumeration</h3><br>
+
+<p style="color:#009933">ifconfig<p>
+<p style="color:#009933">ip a<p>
+<p style="color:#009933">route<p>
+<p style="color:#009933">ip route<p>
+<p style="color:#009933">arp -a<p>
+<p style="color:#009933">ip neigh<p>
+<p style="color:#009933">netstat -ano<p><br>
+
+<h3>Password Hunting</h3><br>
+
+<p style="color:#009933">grep –color=auto -rnw ‘/’ -ie “PASSWORD” –color=always 2> /dev/null<p>
+<p style="color:#009933">locate password | more<p>
+<p style="color:#009933">find / -name id_rsa 2> /dev/null<p><br>
+
+I’ve also gone through a few articles I had bookmarked (I have a lot of them on my backlog. More than I care to admit...):<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://github.com/exaybachay-ak/SecurityAdvice">>> SecurityAdvice</a><br>
+Short article about general security advice. Talks about Blue Teaming, Red Teaming, certifications, social networking and interviewing skills. In there I found <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://github.com/sbilly/awesome-security">another link</a>, which contains a collection of software, libraries, documents, books, resources and all around cool stuff about security.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.concise-courses.com/how-to-become-a-penetration-tester/">>> How To Become A Penetration Tester</a><br>
+Interesting article where you can read advice from several people about how to get into the security field and how they personally managed to do so.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://danielmiessler.com/blog/build-successful-infosec-career/">>> How to Build a Cybersecurity Career</a><br>
+Great article about the field of Infosec: beginner advice, expectations, certifications, methodologies, online presence, social networking, job landing and career paths. I really liked this quote: Top candidates are having conversations as opposed to being interviewed. Also found a <a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.youtube.com/watch?v=Qw1nNPiH_Go">video</a> about Jason Haddix’s Bug Bounty Hunter Methodology.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.reddit.com/r/cscareerquestions/comments/4k7g9y/how_to_get_into_cybersecurity/d3d1qai/?context=3">>> How to get into cybersecurity?</a><br>
+Reddit comment with relevant and useful info.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.schneier.com/blog/archives/2012/07/how_to_become_a_1.html">>> So You Want to Be a Security Expert</a><br>
+Article about getting into the security field. I liked this quote: Good engineering involves thinking about how things can be made to work; the security mindset involves thinking about how things can be made to fail.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://www.reddit.com/r/ITCareerQuestions/comments/dvynd8/im_seeing_a_lot_of_the_how_do_i_get_started_in/">>> Infosec list of resources and study direction.</a><br>
+Great post with a bunch of information about career paths (offensive and defensive) including certification paths to take.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://medium.com/munrobotic/hacking-your-pen-testing-red-teaming-career-part-1-cc816aca0980">>> Hacking Your Pen Testing / Red Teaming Career: Part 1</a><br>
+Helpful short article with good professional/career advice in the field (part 1 of 2). I thought this quote was interesting: A lot of people can be stuck in what I call the ‘teacher-student mind-set’, especially early in their career. What this is, is the misapprehension that anyone else has responsibility and accountability for your learning and it’s normally a symptom of the school system.<br><br>
+
+<a style="color:#00ccff; text-decoration:none" target="_blank" href="https://medium.com/munrobotic/hacking-your-pen-testing-red-teaming-career-part-2-5d8612a976bc">>> Hacking Your Pen Testing / Red Teaming Career: Part 2</a><br>
+Helpful short article with good professional/career advice in the field (part 2 of 2). I thought this quote was interesting and it is something I personally struggle with: Where I think people get it wrong early in their career, is they see these high flying people who’re super-focused on one particular area and they look for the quickest way to become like them. It can be really enticing to shoot for that early on, as your perception may be that they’ve always been focused on that area, but I would advise against it. When you look at high performers who’re specialist, they normally have a background with broad experiences. They’ve been a generalist before they’ve become a specialist, in fact that generalism has allowed them to become the ninja they are. There are some exceptions to this, but generally you’ll find that you need broad foundations on which to build. My advice is to spend a few years exploring things with a technology focus. Live outside your comfort zone and get used to being a perpetual beginner. This may feel unsettling at first, but it will set you up with the right mind-set to be open to new ideas and experimentation, which is key.
+			</div>
+		</div>
+		<div class="footer">Bruno Firmino @ 2022</div>
+	</main>
+</body>
+</html>

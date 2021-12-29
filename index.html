@@ -1,13 +1,31 @@
----
-layout: default
----
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<ul>
-    {% for post in paginator.posts %}
-      <li>
-          <h2><a href="{{ post.url | prepend: site.baseurl | replace: '//', '/' }}">{{ post.title }}</a></h2>
-          <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date_to_string }}</time>
-          <p>{{ post.content | strip_html | truncatewords:50 }}</p>
-      </li>
-    {% endfor %}
-</ul>
+	<title>Bruno Firmino</title>
+
+	<link href="https://fonts.googleapis.com/css?family=Reem+Kufi|Roboto:300" rel="stylesheet">
+	<link rel="stylesheet" href="css/reset.css">
+	<link rel="stylesheet" href="css/styles.css">
+	<link rel="stylesheet" href="css/themes/dark.css">
+</head>
+<body>
+	<main>
+		<div class="intro">Hello, I'm Bruno!</div>
+		<div class="tagline"><a style="color:#ffffff; text-decoration:none" href="about.html">About</a> | <a style="color:#ffffff; text-decoration:none" href="blog.html">Blog</a></div>
+		<div class="icons-social">
+			<a title="LinkedIn" target="_blank" href="https://www.linkedin.com/in/brunofirmino/"><img src="icons/linkedin.png" alt="LinkedIn" style="width:64px;height:64px;"></a>
+			<a title="Github" target="_blank" href="https://github.com/nolkasaur/"><img src="icons/github.png" alt="Github" style="width:64px;height:64px;"></a>
+			<a title="Twitter" target="_blank" href="https://twitter.com/nolkasaur/"><img src="icons/twitter.png" alt="Twitter" style="width:64px;height:64px;"></a>
+			<a title="Email" target="_blank" href="mailto:brunofirmino@protonmail.com"><img src="icons/email.png" alt="Email" style="width:64px;height:64px;"></a>
+			<a title="LeetCode" target="_blank" href="https://leetcode.com/nolkasaur/"><img src="icons/leetcode.png" alt="LeetCode" style="width:64px;height:64px;"></a>
+			<a title="HackerRank" target="_blank" href="https://www.hackerrank.com/nolkasaur/"><img src="icons/hackerrank.png" alt="HackerRank" style="width:64px;height:64px;"></a>
+			<a title="ArtStation" target="_blank" href="https://www.artstation.com/nolkasaur/"><img src="icons/artstation.png" alt="ArtStation" style="width:64px;height:64px;"></a>
+		</div>
+		<div class="footer">Bruno Firmino @ 2022</div>
+	</main>
+</body>
+</html>

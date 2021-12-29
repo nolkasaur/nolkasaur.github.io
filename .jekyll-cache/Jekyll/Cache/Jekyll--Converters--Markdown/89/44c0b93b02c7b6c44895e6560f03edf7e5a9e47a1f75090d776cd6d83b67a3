@@ -1,0 +1,190 @@
+I"g<p>Hi.</p>
+
+<p>GNU Privacy Guard (GnuPG or GPG) is an encryption program that provides cryptographic privacy and authentication for data communication. It’s used for signing, encrypting, and decrypting texts, files, e-mails and such.</p>
+
+<p>GPG is a replacement for Symantec’s PGP (Pretty Good Privacy). They both are interoperable implementations of the OpenPGP standards. I chose to go with GPG because I’m biased toward free and open source software.</p>
+
+<p>After you download and install GPG on your operation system of choice, here are a few commands you might find useful:</p>
+
+<p># Check GPG version</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --version
+</code></pre></div></div>
+
+<p># List public keys you have stored (yours and other people’s keys)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --list-keys
+</code></pre></div></div>
+
+<p># List private keys (generally only your own)</p>
+
+<p># The ID is the hexadecimal number listed</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --list-secret-keys
+</code></pre></div></div>
+
+<p># Create a new private key</p>
+
+<p># It will ask for a passphrase, your name and e-mail</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --gen-key
+</code></pre></div></div>
+
+<p># Export public key to file</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --armor --output "key.txt" --export "YOUR-NAME"
+</code></pre></div></div>
+
+<p># Publish public key to server</p>
+
+<p># MIT is just an example</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --keyserver hkp://pgp.mit.edu --send-keys XXXXXXXX
+</code></pre></div></div>
+
+<p># Export private key to file, for backup purposes</p>
+
+<p># Keep it secret!</p>
+
+<p># Replace XXXXXXXX with your hexadecimal key ID</p>
+
+<p># Omitting the --armor flag will give you binary output instead of ASCII</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --export-secret-keys --armor XXXXXXXX &gt; ./my-priv-gpg-key.asc
+</code></pre></div></div>
+
+<p># Delete private keys from local storage</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --delete-secret-keys XXXXXXXX
+</code></pre></div></div>
+
+<p># Delete public keys from local storage</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --delete-keys XXXXXXXX
+</code></pre></div></div>
+
+<p># Import public key or private key from file</p>
+
+<p># This works the same for binary or ASCII (armored) versions of keys</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --import ./my-priv-gpg-key.asc
+</code></pre></div></div>
+
+<p># Import public key or private key from server</p>
+
+<p># For example, import the DevDungeon/NanoDano public GPG key from MIT</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --keyserver pgp.mit.edu  --recv C104CDF0EDA54C82
+</code></pre></div></div>
+
+<p># Import NanoDano’s public GPG key</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --keyserver pgp.mit.edu --search-keys nanodano@devdungeon.com
+</code></pre></div></div>
+
+<p><strong>Encrypt message symmetrically (passphrase)</strong></p>
+
+<p># Options: --armor, --cipher-algo “ALGO-NAME (e.g. AES256)”, --output “output.txt.gpg (or .asc if armored)”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --symmetric message.txt
+</code></pre></div></div>
+
+<p># Encrypt and sign (all in a single output file)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --sign --symmetric message.txt
+</code></pre></div></div>
+
+<p><strong>Encrypt message asymmetrically</strong></p>
+
+<p># This will prompt and ask the recipient’s ID or email address, if you don’t specify it upfront</p>
+
+<p># Options: -r “RECIPIENT-EMAIL-ADDRESS”, --armor, --output “output.txt.gpg (or .asc if armored)”</p>
+
+<p># Default encrypted output will be in message.txt.gpg (or .asc if armored)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --encrypt message.txt
+</code></pre></div></div>
+
+<p># Encrypt and sign at the same time</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --encrypt --sign message.txt
+</code></pre></div></div>
+
+<p><strong>Decrypt message</strong></p>
+
+<p># Automatically detects and verifies signature, symmetry, key, may prompt for passphrase</p>
+
+<p># Options: &gt; decrypted.txt (redirect output to file)</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg -d message.txt.gpg
+</code></pre></div></div>
+
+<p><strong>Sign a message</strong></p>
+
+<p># Options: --sign instead of --clearsign in order to obtain binary output</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --clearsign message.txt
+</code></pre></div></div>
+
+<p># Can be verified with –decrypt</p>
+
+<p># They are not <em>actually</em> encrypted</p>
+
+<p># This will print out the message along with the signature info</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --decrypt message.txt.gpg
+gpg --decrypt message.txt.asc
+</code></pre></div></div>
+
+<p><strong>Encrypt and sign a message</strong></p>
+
+<p># Symmetric encrypt with signature</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --sign --symmetric message.txt
+</code></pre></div></div>
+
+<p># Asymmetric encrypt with signature</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --sign --encrypt --recipient RECIPIENT-EMAIL message.txt
+</code></pre></div></div>
+
+<p><strong>Verify signatures</strong></p>
+
+<p># When you decrypt the message it will verify the signature</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --decrypt message.txt.asc  
+</code></pre></div></div>
+
+<p># Verify a signed message that included a signature</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --verify message.txt.asc
+</code></pre></div></div>
+
+<p># Verify and extract original document</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --output message.txt message.txt.asc
+</code></pre></div></div>
+
+<p><strong>Detached signatures</strong></p>
+
+<p># Create a separate signature file</p>
+
+<p># Will create message.txt.sig</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --detach-sign message.txt
+</code></pre></div></div>
+
+<p># This verify will automatically check the signature against a file named “message.txt”</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --verify message.txt.sig
+</code></pre></div></div>
+
+<p># Specify the file to check it against</p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>gpg --verify some_signature.sig ./message.txt
+</code></pre></div></div>
+
+<p>You can check out my public key on my About page</p>
+
+<p><a href="https://www.devdungeon.com/content/gpg-tutorial">Based on this guide by NanoDano</a></p>
+:ET
